@@ -8,15 +8,59 @@ export function Home() {
 
   const [formsData, setFormsData] = useState<FormsData>({fullname:"", company: "", number: "", email:"", details:"",  images: []})
  
+
   const handleFormsChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormsData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  
+    if (name === 'number') {
+      const digits = value.replace(/\D/g, '');
+  
+      // Se está apagando, sempre atualiza
+      if (digits.length < previousPhoneDigits.length) {
+        setFormsData(prev => ({
+          ...prev,
+          number: value
+        }));
+        setPreviousPhoneDigits(digits);
+        return;
+      }
+  
+      // Se ultrapassou 11 dígitos, ignora a digitação
+      if (digits.length > 11) return;
+  
+      // Aplica formatação normalmente
+      const formatted = formatPhoneNumber(value);
+      setFormsData(prev => ({
+        ...prev,
+        number: formatted
+      }));
+      setPreviousPhoneDigits(digits);
+    } else {
+      setFormsData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
+  
+
+  const [previousPhoneDigits, setPreviousPhoneDigits] = useState('');
+
+  const formatPhoneNumber = (value: string): string => {
+
+    const digits = value.replace(/\D/g, '').slice(0, 11);
+
+    if (digits.length === 0) return '';
+    if (digits.length === 1) return `(${digits}`;
+    if (digits.length === 2) return `(${digits})`;
+    if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+  };
+  
+  
+
 
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>

@@ -42,7 +42,7 @@ const FormCliente: React.FC<FormClienteProps> = ({
         onChange={handleFormsChange}
         placeholder="Telefone"
         className="border p-2"
-      />
+        />
       <input
         type="email"
         name="email"
