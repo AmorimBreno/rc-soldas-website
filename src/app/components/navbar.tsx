@@ -35,23 +35,28 @@ export function Navbar() {
             : 'rgba(10, 10, 10, 0.6)',
         color: theme === 'light' ? 'black' : 'white'
       }}
-      className="fixed left-0 top-0 z-10 flex w-full items-center justify-between p-5 px-8 font-mont backdrop-blur-md transition-all duration-700"
+      className="uppercase fixed left-0 top-0 z-10 flex w-full items-center justify-between p-5 px-8 font-mont backdrop-blur-md transition-all duration-700"
     >
       <RiMenu2Line
         className="flex cursor-pointer text-2xl sm:hidden"
         onClick={handleOpenMenu}
       />
       <div className="hidden items-center gap-16 sm:flex">
-        <PiFlowerLotus className="text-3xl" />
         <div className="flex items-center gap-8 text-lg">
           <a href="#" className="cursor-pointer">
-            Home
+            Início
           </a>
           <a href="#" className="cursor-pointer">
-            About
+            Clientes
           </a>
           <a href="#" className="cursor-pointer">
-            Contact
+            Nossa Solda
+          </a>
+          <a href="#" className="cursor-pointer">
+            Materiais
+          </a>
+          <a href="#" className="cursor-pointer">
+            Contato
           </a>
         </div>
       </div>
@@ -89,25 +94,36 @@ export function Navbar() {
               className="absolute left-[85%] top-4 cursor-pointer text-4xl"
               onClick={handleCloseMenu}
             />
-            <PiFlowerLotus className="text-6xl" />
             <div className="flex flex-col justify-center gap-8 text-xl">
               <a
                 href="#"
                 className={`cursor-pointer transition-all duration-1000 ${fade ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
               >
-                Home
+                Início
               </a>
               <a
                 href="#"
                 className={`cursor-pointer transition-all delay-100 duration-1000 ${fade ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
               >
-                About
+                Clientes
+              </a>
+              <a
+                href="#"
+                className={`cursor-pointer transition-all delay-100 duration-1000 ${fade ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
+              >
+                Nossa Solda
+              </a>
+              <a
+                href="#"
+                className={`cursor-pointer transition-all delay-100 duration-1000 ${fade ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
+              >
+                Materiais
               </a>
               <a
                 href="#"
                 className={`cursor-pointer transition-all delay-200 duration-1000 ${fade ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
               >
-                Contact
+                Contato
               </a>
             </div>
           </div>
