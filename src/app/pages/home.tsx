@@ -16,26 +16,25 @@ export function Home() {
   
     if (name === 'number') {
       const digits = value.replace(/\D/g, '');
+
+      if (digits.length > 11) return;
   
-      // Se está apagando, sempre atualiza
-      if (digits.length < previousPhoneDigits.length) {
+      // Aplica formatação apenas se o número de dígitos aumentou
+      if (digits.length > previousPhoneDigits.length) {
+        const formatted = formatPhoneNumber(value);
+        setFormsData(prev => ({
+          ...prev,
+          number: formatted
+        }));
+      } else {
+        // Se está apagando, mantém o valor como está
         setFormsData(prev => ({
           ...prev,
           number: value
         }));
-        setPreviousPhoneDigits(digits);
-        return;
       }
   
-      // Se ultrapassou 11 dígitos, ignora a digitação
-      if (digits.length > 11) return;
-  
-      // Aplica formatação normalmente
-      const formatted = formatPhoneNumber(value);
-      setFormsData(prev => ({
-        ...prev,
-        number: formatted
-      }));
+      // Atualiza o valor anterior
       setPreviousPhoneDigits(digits);
     } else {
       setFormsData(prev => ({
