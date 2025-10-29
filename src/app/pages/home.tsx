@@ -5,6 +5,7 @@ import ContactMeForms from '../components/ContactMeForms'
 import HeroSection from '../components/heroSection/heroSection'
 import ClientSection from '../components/clientsSection/clientsSection'
 import SoldasSection from '../components/soldasSection/soldasSection'
+import CarrouselSection from '../components/carrouselSection/carrouselSection'
 
 export function Home() {
   const { theme } = useTheme()
@@ -92,7 +93,7 @@ export function Home() {
       <HeroSection />
       <ClientSection />
       <SoldasSection />
-      <div className="h-screen w-full">carrousel</div>
+      <CarrouselSection />
       <div className="mt-[32px] flex h-screen w-full flex-col items-center justify-start gap-[64px] bg-white px-[32px] pb-[16px] pt-[96px] text-black">
         <p className="text-[48px] font-bold">CONTATE-NOS</p>
         <ContactMeForms
