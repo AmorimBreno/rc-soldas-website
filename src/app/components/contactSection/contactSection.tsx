@@ -75,16 +75,17 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact">
-      <div className="mt-[32px] flex h-screen max-h-[960px] w-full flex-col items-center justify-start gap-[64px] bg-white px-[32px] pb-[16px] pt-[96px] text-black">
-        <p className="text-[48px] font-bold">CONTATE-NOS</p>
-        <ContactMeForms
-          formsData={formsData}
-          handleFormsChange={handleFormsChange}
-          handleFormsSubmit={handleFormsSubmit}
-          handleImageChange={handleImageChange}
-        />
-      </div>
+    <section
+      id="contact"
+      className="mt-[32px] flex h-screen max-h-[960px] w-full flex-col items-center justify-start gap-[64px] bg-white px-[32px] pb-[16px] pt-[96px] text-black"
+    >
+      <p className="text-[48px] font-bold">CONTATE-NOS</p>
+      <ContactMeForms
+        formsData={formsData}
+        handleFormsChange={handleFormsChange}
+        handleFormsSubmit={handleFormsSubmit}
+        handleImageChange={handleImageChange}
+      />
     </section>
   )
 }

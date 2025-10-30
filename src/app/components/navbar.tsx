@@ -31,9 +31,6 @@ export function Navbar() {
           <a href="#hero" className="cursor-pointer">
             Início
           </a>
-          <a href="#clients" className="cursor-pointer">
-            Clientes
-          </a>
           <a href="#soldas" className="cursor-pointer">
             Nossa Solda
           </a>
@@ -53,10 +50,6 @@ export function Navbar() {
             onClick={handleCloseMenu}
           />
           <div
-            style={{
-              backgroundColor: 'rgba(10, 10, 10, 1)',
-              color: 'white'
-            }}
             className={`absolute left-0 top-0 z-30 flex h-screen w-4/5 flex-col gap-8 bg-white p-12 transition-all duration-700 ${fade ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
           >
             <IoClose
