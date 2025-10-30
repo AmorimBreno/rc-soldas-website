@@ -2,12 +2,12 @@ import heroImage from '../../../assets/soldaTIG.jpg'
 
 export default function SoldasSection() {
   return (
-    <div className="flex h-[960px] w-full flex-row items-center justify-center gap-[64px] bg-white px-[64px] py-[96px]">
+    <div className="flex h-screen max-h-[960px] w-full flex-row items-center justify-center gap-[64px] bg-white px-[64px] py-[96px]">
       <div className="flex h-full w-full flex-col items-start justify-between gap-[64px]">
-        <p className="text-[48px] font-bold uppercase text-black">
+        <p className="text-[40px] font-bold uppercase text-black">
           Soldas especiais para aplicações industriais exigentes
         </p>
-        <p className="text-[20px] text-black">
+        <p className="text-[16px] text-black">
           Nossas soluções em soldagem foram desenvolvidas para atender aos mais
           altos padrões de qualidade e segurança em diversos segmentos
           industriais. Trabalhamos com processos precisos e materiais adequados

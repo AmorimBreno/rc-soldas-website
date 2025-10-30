@@ -2,9 +2,9 @@ import { useState } from 'react'
 import imagemAluminio from '../../../assets/materials/aluminio.jpg'
 import imagemAcoInox from '../../../assets/materials/inox.jpg'
 import imagemCobre from '../../../assets/materials/cobre.jpg'
-// import imagemAcoCarbono from '../../../assets/materials/acoCarbono.jpg'
-// import imagemAcoGalvanizado from '../../../assets/materials/acoGalvanizado.jpg'
-// import imagemFerroFundido from '../../../assets/materials/ferroFundido.jpg'
+import imagemAcoCarbono from '../../../assets/materials/acoCarb.jpeg'
+import imagemAcoGalvanizado from '../../../assets/materials/acoGalv.jpeg'
+import imagemFerroFundido from '../../../assets/materials/ferroFund.jpeg'
 
 const WeldingMaterialsCarousel = () => {
   const materials = [
@@ -46,8 +46,7 @@ const WeldingMaterialsCarousel = () => {
     },
     {
       name: 'Aço Carbono',
-      image:
-        'https://images.unsplash.com/photo-1565440555196-5e5f384e5153?w=800&q=80',
+      image: imagemAcoCarbono,
       shortDesc: 'Material mais comum em soldagem',
       description:
         'O aço carbono é o material mais utilizado em processos de soldagem devido ao seu excelente custo-benefício e facilidade de trabalho.',
@@ -59,8 +58,7 @@ const WeldingMaterialsCarousel = () => {
     },
     {
       name: 'Aço Galvanizado',
-      image:
-        'https://images.unsplash.com/photo-1504624720567-64a41caa7f6c?w=800&q=80',
+      image: imagemAcoGalvanizado,
       shortDesc: 'Proteção anticorrosiva',
       description:
         'Aço carbono com revestimento de zinco que proporciona excelente proteção contra intempéries e corrosão.',
@@ -71,8 +69,7 @@ const WeldingMaterialsCarousel = () => {
     },
     {
       name: 'Ferro Fundido',
-      image:
-        'https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80',
+      image: imagemFerroFundido,
       shortDesc: 'Durabilidade e rigidez',
       description:
         'Material duro e resistente, porém quebradiço. Requer pré-aquecimento e técnicas especializadas para soldagem.',
@@ -99,7 +96,7 @@ const WeldingMaterialsCarousel = () => {
   )
 
   return (
-    <div className="flex h-screen max-h-[960px] items-center justify-center py-[64px]">
+    <div className="flex h-screen max-h-[960px] w-2/3 items-center justify-center py-[64px]">
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-2 text-center text-4xl font-bold uppercase text-white">
           Materiais de Soldagem
@@ -108,7 +105,7 @@ const WeldingMaterialsCarousel = () => {
           Conheça os principais materiais utilizados em processos de soldagem
         </p>
 
-        <div className="grid auto-rows-[160px] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-[200px] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {materials.map((material, index) => (
             <div
               key={index}
