@@ -20,26 +20,25 @@ export default function ClientSection() {
   ]
 
   return (
-    <div className="flex w-full flex-col items-center justify-center bg-white pt-[64px]">
-      <p className="mb-8 text-2xl font-bold text-gray-500">
+    <div className="flex w-full flex-col items-center justify-center bg-white pt-12 md:pt-16">
+      <p className="mb-6 px-4 text-center text-lg font-bold text-gray-500 sm:text-xl md:mb-8 md:text-2xl">
         Empresas parceiras que confiam em nós
       </p>
-
       {/* Marquee Container */}
       <div className="relative w-full overflow-hidden bg-white">
         {/* Marquee Track */}
-        <div className="animate-marquee hover:pause-animation flex">
+        <div className="animate-marquee-mobile md:animate-marquee-desktop hover:pause-animation flex">
           {/* First set of logos */}
           {logosClientes.map((logo, index) => (
             <div
               key={`first-${index}`}
-              className="mx-4 flex h-64 w-64 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110"
+              className="mx-2 flex h-32 w-32 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110 sm:mx-3 sm:h-40 sm:w-40 md:mx-4 md:h-48 md:w-48 lg:h-64 lg:w-64"
             >
               <span className="text-2xl font-bold text-slate-800">
                 <img
                   src={logo}
                   alt={`Logo do cliente ${index + 1}`}
-                  className="max-h-48 max-w-48 object-contain"
+                  className="max-h-24 max-w-24 object-contain sm:max-h-32 sm:max-w-32 md:max-h-40 md:max-w-40 lg:max-h-48 lg:max-w-48"
                 />
               </span>
             </div>
@@ -47,19 +46,18 @@ export default function ClientSection() {
           {/* Duplicate set for seamless loop */}
           {logosClientes.map((logo, index) => (
             <div
-              key={`first-${index}`}
-              className="mx-4 flex h-64 w-64 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110"
+              key={`second-${index}`}
+              className="mx-2 flex h-32 w-32 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110 sm:mx-3 sm:h-40 sm:w-40 md:mx-4 md:h-48 md:w-48 lg:h-64 lg:w-64"
             >
               <img
                 src={logo}
                 alt={`Logo do cliente ${index + 1}`}
-                className="max-h-48 max-w-48 object-contain"
+                className="max-h-24 max-w-24 object-contain sm:max-h-32 sm:max-w-32 md:max-h-40 md:max-w-40 lg:max-h-48 lg:max-w-48"
               />
             </div>
           ))}
         </div>
       </div>
-
       <style>{`
         @keyframes marquee {
           0% {
@@ -69,13 +67,16 @@ export default function ClientSection() {
             transform: translateX(-50%);
           }
         }
-
-        .animate-marquee {
+        .animate-marquee-mobile {
+          display: flex;
+          animation: marquee 25s linear infinite;
+          width: fit-content;
+        }
+        .animate-marquee-desktop {
           display: flex;
           animation: marquee 45s linear infinite;
           width: fit-content;
         }
-
         .pause-animation:hover {
           animation-play-state: paused;
         }

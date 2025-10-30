@@ -6,7 +6,7 @@ import ContactSection from '../components/contactSection/contactSection'
 
 export function Home() {
   return (
-    <main className="flex min-h-screen w-full flex-col items-center justify-center bg-black py-24 text-white transition-all duration-700 md:py-0">
+    <main className="flex min-h-screen w-full flex-col items-center justify-center bg-black text-white transition-all duration-700 md:py-0">
       <HeroSection />
       <ClientSection />
       <SoldasSection />
