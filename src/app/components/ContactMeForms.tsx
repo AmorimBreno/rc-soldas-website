@@ -47,7 +47,7 @@ const FormCliente: React.FC<FormClienteProps> = ({
   return (
     <form
       onSubmit={handleFormsSubmit}
-      className="grid w-2/3 grid-cols-2 gap-4 p-4"
+      className="grid h-screen max-h-[960px] w-2/3 grid-cols-2 gap-4 p-4"
     >
       <input
         type="text"
@@ -106,6 +106,7 @@ const FormCliente: React.FC<FormClienteProps> = ({
           <Upload className="h-10 w-10 text-blue-950" />
           <p className="mt-2 text-blue-950">Clique para enviar imagens</p>
           <input
+            title="input file images"
             ref={fileInputRef}
             type="file"
             name="images"
@@ -128,6 +129,7 @@ const FormCliente: React.FC<FormClienteProps> = ({
                   {img.name}
                 </span>
                 <button
+                  title="send"
                   type="button"
                   onClick={() => removeImage(index)}
                   className="text-blue-950 hover:text-red-600"

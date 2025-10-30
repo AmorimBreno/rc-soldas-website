@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <div
       className={
-        ' flex min-h-[960px] w-full flex-col items-start justify-center  px-[32px]'
+        'flex h-screen max-h-[960px] w-full flex-col items-start justify-center px-[32px]'
       }
       style={{
         backgroundImage: `url(${heroImage})`,

@@ -2,7 +2,7 @@ import heroImage from '../../../assets/soldaTIG.jpg'
 
 export default function SoldasSection() {
   return (
-    <div className="mt-[32px] flex h-[960px] w-full flex-row items-center justify-center gap-[64px] bg-white px-[64px] py-[96px]">
+    <div className="flex h-[960px] w-full flex-row items-center justify-center gap-[64px] bg-white px-[64px] py-[96px]">
       <div className="flex h-full w-full flex-col items-start justify-between gap-[64px]">
         <p className="text-[48px] font-bold uppercase text-black">
           Soldas especiais para aplicações industriais exigentes

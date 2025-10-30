@@ -21,13 +21,7 @@ export function Navbar() {
   }
 
   return (
-    <nav
-      style={{
-        backgroundColor: 'rgba(10, 10, 10, 0.6)',
-        color: 'white'
-      }}
-      className="fixed left-0 top-0 z-10 flex w-full items-center justify-between p-5 px-8 font-mont uppercase backdrop-blur-md transition-all duration-700"
-    >
+    <nav className="fixed left-0 top-0 z-10 flex w-full items-center justify-between bg-black p-5 px-8 font-mont uppercase text-white backdrop-blur-md transition-all duration-700">
       <RiMenu2Line
         className="flex cursor-pointer text-2xl sm:hidden"
         onClick={handleOpenMenu}

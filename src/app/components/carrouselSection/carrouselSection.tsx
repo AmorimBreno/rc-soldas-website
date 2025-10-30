@@ -98,7 +98,7 @@ const WeldingMaterialsCarousel = () => {
   const visibleIndices = getVisibleCards()
 
   return (
-    <div className="min-h-[960px] w-full px-4 py-16">
+    <div className="h-screen max-h-[960px] w-full px-4 py-16">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-16 text-center">
@@ -231,12 +231,16 @@ const WeldingMaterialsCarousel = () => {
 
           {/* Navigation Buttons */}
           <button
+            type="button"
+            title="navigation dot"
             onClick={prevSlide}
             className="absolute left-8 z-40 rounded-full bg-white/90 p-4 text-slate-900 shadow-xl transition-all hover:scale-110 hover:bg-white"
           >
             <ChevronLeft size={32} />
           </button>
           <button
+            type="button"
+            title="navigation dot"
             onClick={nextSlide}
             className="absolute right-8 z-40 rounded-full bg-white/90 p-4 text-slate-900 shadow-xl transition-all hover:scale-110 hover:bg-white"
           >
@@ -248,6 +252,8 @@ const WeldingMaterialsCarousel = () => {
         <div className="mt-12 flex justify-center gap-3">
           {materials.map((_, index) => (
             <button
+              type="button"
+              title="navigation dot"
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`transition-all ${
