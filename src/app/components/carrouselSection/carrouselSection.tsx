@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import imagemAluminio from '../../../assets/materials/aluminio.jpg'
 import imagemAcoInox from '../../../assets/materials/inox.jpg'
 import imagemCobre from '../../../assets/materials/cobre.jpg'
-import imagemAcoCarbono from '../../../assets/materials/acoCarbono.jpg'
-import imagemAcoGalvanizado from '../../../assets/materials/acoGalvanizado.jpg'
-import imagemFerroFundido from '../../../assets/materials/ferroFundido.jpg'
+// import imagemAcoCarbono from '../../../assets/materials/acoCarbono.jpg'
+// import imagemAcoGalvanizado from '../../../assets/materials/acoGalvanizado.jpg'
+// import imagemFerroFundido from '../../../assets/materials/ferroFundido.jpg'
 
 const WeldingMaterialsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
   const materials = [
     {
@@ -114,39 +114,33 @@ const WeldingMaterialsCarousel = () => {
         <div className="relative flex h-[600px] items-center justify-center">
           {/* Cards */}
           <div className="relative flex h-full w-full items-center justify-center">
-            {visibleIndices.map((materialIndex, position) => {
+            {materials.map((material, materialIndex) => {
+              const position = visibleIndices.indexOf(materialIndex)
+              const isVisible = position !== -1
               const isCenter = position === 1
               const isLeft = position === 0
               const isRight = position === 2
-              const material = materials[materialIndex]
-              const isHovered = hoveredCard === `${materialIndex}-${position}`
+              const isHovered = hoveredCard === materialIndex
 
               return (
                 <div
-                  key={`${materialIndex}-${position}`}
-                  className="absolute transition-all duration-700 ease-out"
-                  style={{
-                    transform: `
-                      translateX(${isLeft ? '-100%' : isRight ? '100%' : '0'})
-                      scale(${isCenter ? 1 : 0.85})
-                      translateZ(${isCenter ? '0px' : '-100px'})
-                    `,
-                    zIndex: isCenter ? 30 : 10,
-                    opacity: isCenter ? 1 : 0.6
-                  }}
+                  key={materialIndex}
+                  className={`absolute transition-all duration-700 ease-out ${
+                    !isVisible ? 'invisible opacity-0' : ''
+                  } ${isLeft ? 'scale-85 -translate-x-full opacity-60' : ''} ${
+                    isRight ? 'scale-85 translate-x-full opacity-60' : ''
+                  } ${
+                    isCenter ? 'translate-x-0 scale-100 opacity-100' : ''
+                  } ${isCenter ? 'z-30' : 'z-10'}`}
                   onMouseEnter={() =>
-                    isCenter
-                      ? setHoveredCard(`${materialIndex}-${position}`)
-                      : null
+                    isCenter ? setHoveredCard(materialIndex) : null
                   }
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <div
-                    className={`relative h-[560px] w-[480px] cursor-pointer`}
-                  >
+                  <div className="relative h-[560px] w-[480px] cursor-pointer">
                     {/* Card Base */}
                     <div
-                      className="hover:shadow-3xl hover:shadow-white-500/20 absolute inset-0 transform overflow-hidden rounded-[4px] bg-white shadow-2xl transition-transform duration-300"
+                      className="hover:shadow-3xl hover:shadow-white-500/20 absolute inset-0 transform overflow-hidden rounded bg-white shadow-2xl transition-transform duration-300"
                       onClick={
                         isCenter ? undefined : isLeft ? prevSlide : nextSlide
                       }
@@ -171,14 +165,11 @@ const WeldingMaterialsCarousel = () => {
 
                     {/* Hover Info Card */}
                     <div
-                      className={`absolute inset-0 rounded-[4px] bg-white p-8 shadow-2xl transition-all duration-500 ${
+                      className={`absolute inset-0 rounded bg-white p-8 shadow-2xl transition-all duration-500 ${
                         isHovered
-                          ? 'visible opacity-100'
-                          : 'invisible opacity-0'
+                          ? 'visible scale-100 opacity-100'
+                          : 'invisible scale-95 opacity-0'
                       }`}
-                      style={{
-                        transform: isHovered ? 'scale(1)' : 'scale(0.95)'
-                      }}
                     >
                       <div className="h-full space-y-5 overflow-y-auto">
                         {/* Title */}

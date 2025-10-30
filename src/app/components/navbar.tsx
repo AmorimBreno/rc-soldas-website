@@ -1,14 +1,8 @@
-import { PiFlowerLotus } from 'react-icons/pi'
-import { FiSun } from 'react-icons/fi'
-import { FiGithub } from 'react-icons/fi'
 import { RiMenu2Line } from 'react-icons/ri'
 import { useState } from 'react'
 import { IoClose } from 'react-icons/io5'
-import { FaRegMoon } from 'react-icons/fa'
-import { useTheme } from '../hooks/use-theme'
 
 export function Navbar() {
-  const { theme, toggleTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [fade, setFade] = useState(false)
 
@@ -29,13 +23,10 @@ export function Navbar() {
   return (
     <nav
       style={{
-        backgroundColor:
-          theme === 'light'
-            ? 'rgba(255, 255, 255, 0.6)'
-            : 'rgba(10, 10, 10, 0.6)',
-        color: theme === 'light' ? 'black' : 'white'
+        backgroundColor: 'rgba(10, 10, 10, 0.6)',
+        color: 'white'
       }}
-      className="uppercase fixed left-0 top-0 z-10 flex w-full items-center justify-between p-5 px-8 font-mont backdrop-blur-md transition-all duration-700"
+      className="fixed left-0 top-0 z-10 flex w-full items-center justify-between p-5 px-8 font-mont uppercase backdrop-blur-md transition-all duration-700"
     >
       <RiMenu2Line
         className="flex cursor-pointer text-2xl sm:hidden"
@@ -60,20 +51,7 @@ export function Navbar() {
           </a>
         </div>
       </div>
-      <div className="flex items-center gap-6 text-xl">
-        <a
-          href="https://github.com/enzosakamoto/react-workshop"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FiGithub />
-        </a>
-        {theme === 'light' ? (
-          <FaRegMoon onClick={toggleTheme} className="cursor-pointer" />
-        ) : (
-          <FiSun onClick={toggleTheme} className="cursor-pointer" />
-        )}
-      </div>
+
       {isMenuOpen && (
         <>
           <div
@@ -82,11 +60,8 @@ export function Navbar() {
           />
           <div
             style={{
-              backgroundColor:
-                theme === 'light'
-                  ? 'rgba(255, 255, 255, 1)'
-                  : 'rgba(10, 10, 10, 1)',
-              color: theme === 'light' ? 'black' : 'white'
+              backgroundColor: 'rgba(10, 10, 10, 1)',
+              color: 'white'
             }}
             className={`absolute left-0 top-0 z-30 flex h-screen w-4/5 flex-col gap-8 bg-white p-12 transition-all duration-700 ${fade ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
           >
