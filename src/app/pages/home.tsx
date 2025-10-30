@@ -1,7 +1,7 @@
 import HeroSection from '../components/heroSection/heroSection'
 import ClientSection from '../components/clientsSection/clientsSection'
 import SoldasSection from '../components/soldasSection/soldasSection'
-import CarrouselSection from '../components/carrouselSection/carrouselSection'
+import CarrouselSection from '../components/materialsSection/materialsSection'
 import ContactSection from '../components/contactSection/contactSection'
 
 export function Home() {

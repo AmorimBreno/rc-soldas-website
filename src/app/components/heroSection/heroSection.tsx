@@ -12,7 +12,7 @@ export default function HeroSection() {
         backgroundPosition: 'center'
       }}
     >
-      <p className="mt-[128px] w-1/2 text-[64px] font-bold">
+      <p className="mt-[128px] w-2/3 text-[64px] font-bold">
         A <span className="text-yellow-400">FORÇA</span> POR TRÁS DA INOVAÇÃO
         INDUSTRIAL
       </p>
