@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Upload, X } from 'lucide-react'
-import { FormsData } from '../types/formsData'
+import { FormsData } from '@/app/types/formsData'
 
 type FormClienteProps = {
   formsData: FormsData

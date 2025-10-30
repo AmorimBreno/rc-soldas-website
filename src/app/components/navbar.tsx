@@ -28,19 +28,19 @@ export function Navbar() {
       />
       <div className="hidden items-center gap-16 sm:flex">
         <div className="flex items-center gap-8 text-lg">
-          <a href="#" className="cursor-pointer">
+          <a href="#hero" className="cursor-pointer">
             Início
           </a>
-          <a href="#" className="cursor-pointer">
+          <a href="#clients" className="cursor-pointer">
             Clientes
           </a>
-          <a href="#" className="cursor-pointer">
+          <a href="#soldas" className="cursor-pointer">
             Nossa Solda
           </a>
-          <a href="#" className="cursor-pointer">
+          <a href="#materials" className="cursor-pointer">
             Materiais
           </a>
-          <a href="#" className="cursor-pointer">
+          <a href="#contact" className="cursor-pointer">
             Contato
           </a>
         </div>

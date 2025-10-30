@@ -20,47 +20,48 @@ export default function ClientSection() {
   ]
 
   return (
-    <div className="] flex w-full flex-col items-center justify-center bg-white pt-[64px]">
-      <p className="mb-8 text-2xl font-bold text-gray-500">
-        Empresas parceiras que confiam em nós
-      </p>
+    <section  id="clients">
+      <div className="] flex w-full flex-col items-center justify-center bg-white pt-[64px]">
+        <p className="mb-8 text-2xl font-bold text-gray-500">
+          Empresas parceiras que confiam em nós
+        </p>
 
-      {/* Marquee Container */}
-      <div className="relative w-full overflow-hidden bg-white">
-        {/* Marquee Track */}
-        <div className="animate-marquee hover:pause-animation flex">
-          {/* First set of logos */}
-          {logosClientes.map((logo, index) => (
-            <div
-              key={`first-${index}`}
-              className="mx-4 flex h-64 w-64 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110"
-            >
-              <span className="text-2xl font-bold text-slate-800">
+        {/* Marquee Container */}
+        <div className="relative w-full overflow-hidden bg-white">
+          {/* Marquee Track */}
+          <div className="animate-marquee hover:pause-animation flex">
+            {/* First set of logos */}
+            {logosClientes.map((logo, index) => (
+              <div
+                key={`first-${index}`}
+                className="mx-4 flex h-64 w-64 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <span className="text-2xl font-bold text-slate-800">
+                  <img
+                    src={logo}
+                    alt={`Logo do cliente ${index + 1}`}
+                    className="max-h-48 max-w-48 object-contain"
+                  />
+                </span>
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {logosClientes.map((logo, index) => (
+              <div
+                key={`first-${index}`}
+                className="mx-4 flex h-64 w-64 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110"
+              >
                 <img
                   src={logo}
                   alt={`Logo do cliente ${index + 1}`}
                   className="max-h-48 max-w-48 object-contain"
                 />
-              </span>
-            </div>
-          ))}
-          {/* Duplicate set for seamless loop */}
-          {logosClientes.map((logo, index) => (
-            <div
-              key={`first-${index}`}
-              className="mx-4 flex h-64 w-64 flex-shrink-0 items-center justify-center transition-all duration-300 hover:scale-110"
-            >
-              <img
-                src={logo}
-                alt={`Logo do cliente ${index + 1}`}
-                className="max-h-48 max-w-48 object-contain"
-              />
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <style>{`
+        <style>{`
         @keyframes marquee {
           0% {
             transform: translateX(0);
@@ -80,6 +81,7 @@ export default function ClientSection() {
           animation-play-state: paused;
         }
       `}</style>
-    </div>
+      </div>
+    </section>
   )
 }
