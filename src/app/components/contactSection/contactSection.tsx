@@ -77,9 +77,11 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="mt-[32px] flex h-screen max-h-[960px] w-full flex-col items-center justify-start gap-[64px] bg-white px-[32px] pb-[16px] pt-[96px] text-black"
+      className="mt-[32px] flex h-screen w-full flex-col items-center justify-center gap-8 bg-white text-black lg:max-h-[960px] lg:gap-[64px] lg:px-[32px] lg:pb-[16px] lg:pt-[96px]"
     >
-      <p className="text-[48px] font-bold">CONTATE-NOS</p>
+      <p className="text-4xl font-bold md:text-5xl lg:text-[48px]">
+        CONTATE-NOS
+      </p>
       <ContactMeForms
         formsData={formsData}
         handleFormsChange={handleFormsChange}
