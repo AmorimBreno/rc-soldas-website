@@ -3,6 +3,7 @@ import ClientSection from '../components/clientsSection/clientsSection'
 import SoldasSection from '../components/soldasSection/soldasSection'
 import CarrouselSection from '../components/materialsSection/materialsSection'
 import ContactSection from '../components/contactSection/contactSection'
+import Footer from '../components/footer'
 
 export function Home() {
   return (
@@ -12,6 +13,7 @@ export function Home() {
       <SoldasSection />
       <CarrouselSection />
       <ContactSection />
+      <Footer />
     </main>
   )
 }
