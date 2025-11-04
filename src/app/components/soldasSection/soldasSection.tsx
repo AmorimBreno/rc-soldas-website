@@ -21,9 +21,12 @@ export default function SoldasSection() {
           aplicadas em equipamentos de produtos químicos sensíveis, onde a
           integridade da solda é fundamental.
         </p>
-        <div className="hidden h-16 w-full cursor-pointer items-center justify-center rounded bg-yellow-400 text-lg font-bold uppercase text-black transition-all duration-300 ease-in-out hover:bg-yellow-300 sm:h-20 sm:text-xl md:w-80 md:text-2xl lg:flex">
+        <a
+          href="#contact"
+          className="hidden h-16 w-full cursor-pointer items-center justify-center rounded bg-yellow-400 text-lg font-bold uppercase text-black transition-all duration-300 ease-in-out hover:bg-yellow-300 sm:h-20 sm:text-xl md:w-80 md:text-2xl lg:flex"
+        >
           entrar em contato
-        </div>
+        </a>
       </div>
       <div
         className="flex h-64 w-full items-center justify-center rounded-[4px] sm:h-80 md:h-96 lg:h-full"
@@ -33,9 +36,12 @@ export default function SoldasSection() {
           backgroundPosition: 'center'
         }}
       ></div>
-      <div className="flex h-16 w-full cursor-pointer items-center justify-center rounded bg-yellow-400 text-lg font-bold uppercase text-black transition-all duration-300 ease-in-out hover:bg-yellow-300 sm:h-20 sm:text-xl lg:hidden">
+      <a
+        href="#contact"
+        className="flex h-16 w-full cursor-pointer items-center justify-center rounded bg-yellow-400 text-lg font-bold uppercase text-black transition-all duration-300 ease-in-out hover:bg-yellow-300 sm:h-20 sm:text-xl lg:hidden"
+      >
         entrar em contato
-      </div>
+      </a>
     </section>
   )
 }

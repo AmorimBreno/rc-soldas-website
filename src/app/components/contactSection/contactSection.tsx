@@ -69,9 +69,64 @@ export default function ContactSection() {
     }
   }
 
-  const handleFormsSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormsSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    console.log('Dados enviados:', formsData)
+
+    if (!formsData.fullname || !formsData.email) {
+      alert('❌ Por favor, preencha nome e email')
+      return
+    }
+
+    try {
+      // Criar FormData para enviar arquivos
+      const formData = new FormData()
+
+      // Adicionar campos de texto
+      formData.append('fullname', formsData.fullname)
+      formData.append('company', formsData.company || '')
+      formData.append('number', formsData.number)
+      formData.append('email', formsData.email)
+      formData.append('details', formsData.details || '')
+
+      // Adicionar imagens
+      if (formsData.images && formsData.images.length > 0) {
+        formsData.images.forEach((image, index) => {
+          formData.append(`image${index}`, image)
+        })
+      }
+
+      const webhookUrl =
+        'https://amorimbreno.app.n8n.cloud/webhook-test/27075c8c-c62f-47b6-aa3c-ce2e613a4471'
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        // NÃO adicione Content-Type, o browser faz automaticamente
+        body: formData
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        alert(
+          '✅ Mensagem enviada com sucesso! Entraremos em contato em breve.'
+        )
+
+        setFormsData({
+          fullname: '',
+          company: '',
+          number: '',
+          email: '',
+          details: '',
+          images: []
+        })
+        setPreviousPhoneDigits('')
+      } else {
+        alert(`❌ ${data.error || 'Erro ao enviar mensagem'}`)
+      }
+    } catch (error) {
+      console.error('Erro:', error)
+      alert('❌ Erro ao enviar mensagem. Tente novamente.')
+    }
   }
 
   return (
