@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Upload, X } from 'lucide-react'
+import { Upload, X, Ban } from 'lucide-react'
 import { FormsData } from '@/app/types/formsData'
 
 type FormClienteProps = {
@@ -10,6 +10,8 @@ type FormClienteProps = {
   handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleFormsSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
+
+const MAX_IMAGES = 5
 
 const FormCliente: React.FC<FormClienteProps> = ({
   formsData,
@@ -34,6 +36,16 @@ const FormCliente: React.FC<FormClienteProps> = ({
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newImages = Array.from(e.target.files)
+      const totalImages = images.length + newImages.length
+
+      if (totalImages > MAX_IMAGES) {
+        alert(`❌ Você pode enviar no máximo ${MAX_IMAGES} imagens.`)
+        const allowed = MAX_IMAGES - images.length
+        const limitedNewImages = newImages.slice(0, allowed)
+        setImages((prev) => [...prev, ...limitedNewImages])
+        return
+      }
+
       setImages((prev) => [...prev, ...newImages])
       handleImageChange(e)
     }
@@ -43,6 +55,9 @@ const FormCliente: React.FC<FormClienteProps> = ({
   const removeImage = (index: number) => {
     setImages((prev) => prev.filter((_, i) => i !== index))
   }
+
+  // Determina se atingiu o limite
+  const isLimitReached = images.length >= MAX_IMAGES
 
   return (
     <form
@@ -98,15 +113,29 @@ const FormCliente: React.FC<FormClienteProps> = ({
       >
         {/* Caixa de upload */}
         <div
-          onClick={() => fileInputRef.current?.click()}
-          className={`flex cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed border-blue-950 p-4 transition-colors hover:bg-blue-50 sm:p-6 ${
-            images.length === 0 ? 'h-32 w-full sm:h-40' : 'w-full md:w-1/2'
-          }`}
+          onClick={() => !isLimitReached && fileInputRef.current?.click()}
+          className={`flex cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed p-4 transition-colors sm:p-6 ${
+            isLimitReached
+              ? 'cursor-not-allowed border-gray-400 bg-gray-100'
+              : 'border-blue-950 hover:bg-blue-50'
+          } ${images.length === 0 ? 'h-32 w-full sm:h-40' : 'w-full md:w-1/2'} `}
         >
-          <Upload className="h-6 w-6 text-blue-950 sm:h-8 sm:w-8" />
-          <p className="mt-2 text-xs text-blue-950 sm:text-sm">
-            Clique para enviar imagens
-          </p>
+          {isLimitReached ? (
+            <>
+              <Ban className="h-6 w-6 text-gray-500 sm:h-8 sm:w-8" />
+              <p className="mt-2 text-xs text-gray-500 sm:text-sm">
+                Limite de 5 imagens atingido
+              </p>
+            </>
+          ) : (
+            <>
+              <Upload className="h-6 w-6 text-blue-950 sm:h-8 sm:w-8" />
+              <p className="mt-2 text-xs text-blue-950 sm:text-sm">
+                Clique para enviar imagens ({images.length}/{MAX_IMAGES})
+              </p>
+            </>
+          )}
+
           <input
             title="input file images"
             ref={fileInputRef}
@@ -114,6 +143,7 @@ const FormCliente: React.FC<FormClienteProps> = ({
             name="images"
             multiple
             accept="image/*"
+            disabled={isLimitReached}
             onChange={onImageChange}
             className="hidden"
           />

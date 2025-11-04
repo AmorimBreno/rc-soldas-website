@@ -89,14 +89,20 @@ export default function ContactSection() {
       formData.append('details', formsData.details || '')
 
       // Adicionar imagens
+      // Verificar limite de imagens
+      if (formsData.images && formsData.images.length > 5) {
+        alert('❌ Você pode enviar no máximo 5 imagens.')
+        return
+      }
+
+      // Adicionar imagens (limitadas a 5)
       if (formsData.images && formsData.images.length > 0) {
-        formsData.images.forEach((image, index) => {
+        formsData.images.slice(0, 5).forEach((image, index) => {
           formData.append(`image${index}`, image)
         })
       }
 
-      const webhookUrl =
-        'https://amorimbreno.app.n8n.cloud/webhook-test/27075c8c-c62f-47b6-aa3c-ce2e613a4471'
+      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL
 
       const response = await fetch(webhookUrl, {
         method: 'POST',
